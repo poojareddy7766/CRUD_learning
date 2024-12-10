@@ -18,9 +18,7 @@
 //     },
 //   ];
 // // get it from the same file and send 
-//   router.get('/', (req, res) => {
-//     res.send(users);
-// })
+
 // // export it
 // export default router
 
@@ -39,4 +37,7 @@ router.post('/', (req, res) => {
 
   res.send(`${user.firstName} added to the DB`);
 })  
+  router.get('/', (req, res) => {
+    res.send(users);
+})
 export default router
