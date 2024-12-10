@@ -47,4 +47,10 @@ router.get('/:id', (req, res) => {
   const foundUser = users.find((user) => user.id === id)
   res.send(foundUser)
 });
+// Deleting a particular user based on the id
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+  users = users.filter((user) => user.id !== id)
+  res.send(`${id} deleted successfully from database`);
+});
 export default router
