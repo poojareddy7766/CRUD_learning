@@ -40,4 +40,11 @@ router.post('/', (req, res) => {
   router.get('/', (req, res) => {
     res.send(users);
 })
+// Get a particular user based on the id
+router.get('/:id', (req, res) => {
+  const { id } = req.params;
+  // among te users finding the id that matches
+  const foundUser = users.find((user) => user.id === id)
+  res.send(foundUser)
+});
 export default router
