@@ -28,7 +28,7 @@
 import express from 'express';
 import { v4 as uuidv4 } from 'uuid';
 const router = express.Router();
-const users = [];
+let users = [];
 router.post('/', (req, res) => {
   const user = req.body;
 
@@ -51,6 +51,16 @@ router.get('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   const { id } = req.params;
   users = users.filter((user) => user.id !== id)
-  res.send(`${id} deleted successfully from database`);
+  res.send(`${id} deleted successfully from DB`);
+});
+router.patch('/:id', (req, res) => {
+  const { id } = req.params;
+  // const { firstName, lastName, email} = req.body;
+  // console.log(firstName+" "+lastName+"  "+email);
+  const user = users.find((user) => user.id === id)
+  if(user.firstName) user.firstName = "Pooja";
+  if(user.lastName) user.lastName = "Reddy";
+  if(user.email) user.email = "pooja1234@mail.com"
+  res.send(`User with the ${id} is updated`)
 });
 export default router
